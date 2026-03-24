@@ -5,31 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prince Raj Portfolio</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
 background:#0f172a;
-color:white;
+color:#fff;
 }
 
+/* Navbar */
 nav{
+position:fixed;
+width:100%;
+top:0;
 background:#020617;
-padding:10px;
+padding:15px;
 text-align:center;
 }
 
 nav a{
 color:white;
-margin:10px;
+margin:0 15px;
 text-decoration:none;
 }
 
+nav a:hover{
+color:#38bdf8;
+}
+
+/* Hero */
 .hero{
 height:100vh;
 display:flex;
@@ -37,41 +49,184 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#2563eb,#7c3aed);
+text-align:center;
 }
 
+.hero img{
+width:120px;
+border-radius:50%;
+margin-bottom:15px;
+}
+
+.btn{
+margin-top:10px;
+padding:10px 20px;
+background:#38bdf8;
+color:black;
+text-decoration:none;
+border-radius:5px;
+}
+
+/* Section */
 section{
-padding:40px;
+padding:80px 20px;
 }
 
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+/* Cards */
 .card{
 background:#1e293b;
 padding:20px;
 border-radius:10px;
 margin-top:10px;
 }
-</style>
 
+/* Skills */
+.bar{
+background:#334155;
+border-radius:5px;
+overflow:hidden;
+}
+
+.bar div{
+height:10px;
+background:#38bdf8;
+}
+
+/* Projects */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* Footer */
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+}
+</style>
 </head>
 
 <body>
 
+<!-- Navbar -->
 <nav>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<div class="hero">
+<!-- Hero -->
+<section class="hero" id="home">
+<img src="https://avatars.githubusercontent.com/u/Princeraj92">
 <h1>Hi, I'm Prince Raj 👋</h1>
-<p>Full Stack Developer</p>
+<p id="typing"></p>
+
+<div>
+<a href="https://github.com/Princeraj92" target="_blank">GitHub</a> |
+<a href="#">LinkedIn</a>
 </div>
 
-<section>
+<a href="#projects" class="btn">View Projects</a>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container">
 <h2>About Me</h2>
 <div class="card">
-<p>I am learning Full Stack Development.</p>
+<p>I am a passionate Full Stack Developer pursuing B.Tech in IT.</p>
+</div>
 </div>
 </section>
+
+<!-- Skills -->
+<section id="skills">
+<div class="container">
+<h2>Skills</h2>
+
+<p>HTML - 90%</p>
+<div class="bar"><div style="width:90%"></div></div>
+
+<p>CSS - 85%</p>
+<div class="bar"><div style="width:85%"></div></div>
+
+<p>JavaScript - 80%</p>
+<div class="bar"><div style="width:80%"></div></div>
+
+</div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<h3>Portfolio Website</h3>
+<p>Modern responsive portfolio</p>
+<a href="https://github.com/Princeraj92" class="btn">View Code</a>
+</div>
+
+<div class="card">
+<h3>Todo App</h3>
+<p>Task manager project</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<h2>Contact</h2>
+<div class="card">
+<p>Email: your-email@gmail.com</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Prince Raj</p>
+</footer>
+
+<!-- Typing JS -->
+<script>
+const text = ["Full Stack Developer","MERN Developer","Future Engineer"];
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+current=text[i];
+document.getElementById("typing").textContent=current.substring(0,j);
+
+if(!isDeleting && j<current.length){
+j++;
+setTimeout(type,100);
+}
+else if(isDeleting && j>0){
+j--;
+setTimeout(type,50);
+}
+else{
+isDeleting=!isDeleting;
+if(!isDeleting) i=(i+1)%text.length;
+setTimeout(type,1000);
+}
+}
+type();
+</script>
 
 </body>
 </html>
